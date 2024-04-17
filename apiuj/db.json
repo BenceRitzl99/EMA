@@ -1,0 +1,34 @@
+{
+    "employees": [
+        {
+            "id": 1,
+            "name": "Lant Géza",
+            "city": "Szeged",
+            "salary": 342
+        },
+        {
+            "id": 2,
+            "name": "Erős István",
+            "city": "Szolnok",
+            "salary": 327
+        },
+        {
+            "id": 3,
+            "name": "Fekete János",
+            "city": "Kiszálló",
+            "salary": 3333
+        },
+        {
+            "id": 4,
+            "name": "Robin Hood",
+            "city": "Iron Pub",
+            "salary": 2
+        },
+        {
+            "id": 5,
+            "name": "Krizsicskó Márk",
+            "city": "Érd",
+            "salary": 180
+        }
+    ]
+}
