@@ -1,10 +1,16 @@
 const doc = {
     empBody: document.querySelector("#empBody"),
-    addButton: document.querySelector("#addButton")
+    addButton: document.querySelector("#addButton"),
+    nameDoc: document.querySelector("#name"),
+    cityDoc: document.querySelector("#city"),
+    salaryDoc: document.querySelector("#salary")
 }
 
 const state = {
-     url: "http://localhost:8000/employees"
+     url: "http://localhost:8000/employees",
+     name: "",
+     city: "",
+     salary: 0
     
 }
 
@@ -12,7 +18,14 @@ const state = {
 
 doc.addButton.addEventListener("click", () => {
     console.log("Működik")
+    createEmployee()
 })
+
+function getDataFromForm() {
+    state.name = doc.nameDoc.value
+    state.city = doc.cityDoc.value
+    state.salary = Number(doc.salaryDoc.value)
+}
 
 
 
@@ -23,12 +36,17 @@ function createEmployee() {
             "Content-type": "application/json"
         },
         body: JSON.stringify( { // nem kell idézőjelbe tenni a name-t
-            name: "Valaki",
-            city: "Budapest",
-            salary: 300
+            name: state.name,
+            city: state.city,
+            salary: state.salary
         })
     })
+}
 
+function editEmployee(){
+    fetch(state.url)
+    .then(response => response.json())
+    .then(result => {renderEmployees(result)})
 }
 
 function getEmployees() {
@@ -36,10 +54,7 @@ function getEmployees() {
     
     fetch(state.url)
     .then( response => response.json())
-    .then(result => {
-        // console.log(result)
-        renderEmployees(result)
-    })  //lekérés, aszinkron utasítás, névtelen függvény. Ha van neve, akkor nem kell a (zárójel), ha csak egy utasítás van, akkor nem kell a {kapcsos zárójel} sem.
+    .then(result => {renderEmployees(result)})  //lekérés, aszinkron utasítás, névtelen függvény. Ha van neve, akkor nem kell a (zárójel), ha csak egy utasítás van, akkor nem kell a {kapcsos zárójel} sem.
     // Ha nem hagyom el a {kapcsos zárójelet}, akkor kell a return
     // fetch --> promise-t ad vissza --> használható a then utasítás
 }
