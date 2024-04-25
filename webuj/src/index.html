@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Dolgozók</title>
     <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">        
   </head>
   <body>
@@ -14,8 +15,8 @@
       <h3>Adatok hozzáadása a táblázathoz</h3>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          Adatfelvétel
+        <button type="button" class="btn btn-outline-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="startAdding()">
+          Adatfelvétel <i class="bi bi-person-add"></i>
         </button>
 
         <!-- Modal -->
@@ -28,6 +29,12 @@
               </div>
               <div class="modal-body">
                 <div class="addform">
+                  <div class="input">
+                    <label for="name" class="form-label">
+                      Id
+                    </label>
+                    <input type="text" id="id" readonly class="form-control" >
+                  </div>
                   <div class="input">
                     <label for="name" class="form-label">
                       Név
@@ -48,26 +55,22 @@
                     </label>
                     <input type="text" id="salary" class="form-control">
                   </div>
-        
-                  <div>
-                    <button id="addButton" class="btn btn-outline-success mt-2 mb-4">Mentés</button>
-                  </div>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Bezárás</button>
-                <button type="button" class="btn btn-outline-success" id="addButton">Mentés</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+                <button type="button" class="btn btn-outline-success" id="addButton"><i class="bi bi-floppy"></i></button>
               </div>
             </div>
           </div>
         </div>
-      <table class="table table-striped">
+      <table class="table table-dark table-hover">
         <thead>
           <tr>
             <th>Id</th>
             <th>Név</th>
             <th>Település</th>
-            <th>Fizetés</th>
+            <th colspan="2">Fizetés</th>
           </tr>
         </thead>
         <tbody id="empBody">
